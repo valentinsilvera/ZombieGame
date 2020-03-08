@@ -277,7 +277,7 @@ class GameScene: SKScene {
         let fullScale = SKAction.sequence(
             [scaleUp, scaleDown, scaleUp, scaleDown])
         let group = SKAction.group([fullScale, fullWiggle])
-        let groupWait = SKAction.repeat(group, count: 10)
+        let groupWait = SKAction.repeat(group, count: 7)
         let disappear = SKAction.scale(to: 0, duration: 0.5)
         let removeFromParent = SKAction.removeFromParent()
         let actions = [appear, groupWait, disappear, removeFromParent]
