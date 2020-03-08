@@ -22,7 +22,6 @@ class GameScene: SKScene {
     var invincible: Bool = false
     let catMovePointsPerSec:CGFloat = 480.0
     var lives = 5
-    var trainCount = 0
     var gameOver = false
     
     let catCollisionSound: SKAction = SKAction.playSoundFileNamed("hitCat.wav",
@@ -73,8 +72,8 @@ class GameScene: SKScene {
         run(SKAction.repeatForever(
             SKAction.sequence([SKAction.run() { [weak self] in
                 self?.spawnCat()
-                },
-                               SKAction.wait(forDuration: 1.0)])))
+                }, SKAction.wait(forDuration: 1.0)])))
+        playBackgroundMusic(filename: "backgroundMusic.mp3")
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -103,6 +102,11 @@ class GameScene: SKScene {
         if lives <= 0 && !gameOver {
             gameOver = true
             print("You lose!")
+            let gameOverScene = GameOverScene(size: size, won: false)
+            gameOverScene.scaleMode = scaleMode
+            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+            view?.presentScene(gameOverScene, transition: reveal)
+            backgroundMusicPlayer.stop()
         }
     }
     
@@ -289,26 +293,35 @@ class GameScene: SKScene {
     }
     
     func moveTrain() {
-        var targetPosition = zombie.position
-        
-        enumerateChildNodes(withName: "train") { node, stop in
-            self.trainCount += 1
-            if !node.hasActions() {
-                let actionDuration = 0.3
-                let offset = targetPosition - node.position
-                let direction = offset.normalized()
-                let amountToMovePerSec = direction * self.catMovePointsPerSec
-                let amountToMove = amountToMovePerSec * CGFloat(actionDuration)
-                let moveAction = SKAction.moveBy(x: amountToMove.x, y: amountToMove.y, duration: actionDuration)
-                node.run(moveAction)
-            }
-            targetPosition = node.position
+
+      var trainCount = 0
+      var targetPosition = zombie.position
+
+      enumerateChildNodes(withName: "train") { node, stop in
+        trainCount += 1
+        if !node.hasActions() {
+          let actionDuration = 0.3
+          let offset = targetPosition - node.position
+          let direction = offset.normalized()
+          let amountToMovePerSec = direction * self.catMovePointsPerSec
+          let amountToMove = amountToMovePerSec * CGFloat(actionDuration)
+          let moveAction = SKAction.moveBy(x: amountToMove.x, y: amountToMove.y, duration: actionDuration)
+          node.run(moveAction)
         }
-        if trainCount >= 15 && !gameOver {
-            gameOver = true
-            print("You Win!")
-        }
+        targetPosition = node.position
+      }
+
+      if trainCount >= 15 && !gameOver {
+        gameOver = true
+        print("You win!")
+        backgroundMusicPlayer.stop()
+        let gameOverScene = GameOverScene(size: size, won: true)
+        gameOverScene.scaleMode = scaleMode
+        let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+        view?.presentScene(gameOverScene, transition: reveal)
+      }
     }
+
     
     func loseCats() {
         var loseCount = 0
