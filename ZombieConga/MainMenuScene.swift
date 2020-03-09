@@ -18,12 +18,12 @@ class MainMenuScene: SKScene {
         addChild(background)
         
         startLabel.text = "Touch anywhere to start the game!"
-        startLabel.fontColor = SKColor.black
+        startLabel.fontColor = SKColor.white
         startLabel.fontSize = 100
         startLabel.zPosition = 150
         startLabel.horizontalAlignmentMode = .center
         startLabel.verticalAlignmentMode = .center
-        startLabel.position = CGPoint(x: size.width/2, y: size.height/2 + size.height/4)
+        startLabel.position = CGPoint(x: size.width/2, y: size.height/2 + size.height/3)
         addChild(startLabel)
 
     }

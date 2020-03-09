@@ -15,16 +15,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainMenu" translatesAutoresizingMaskIntoConstraints="NO" id="DWS-0z-FlB">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="MainMenu" translatesAutoresizingMaskIntoConstraints="NO" id="lqs-lE-bNL">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="DWS-0z-FlB" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Zbt-N0-lPE"/>
-                            <constraint firstItem="DWS-0z-FlB" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="nCD-sA-RhE"/>
-                            <constraint firstAttribute="trailing" secondItem="DWS-0z-FlB" secondAttribute="trailing" id="nms-jC-2NA"/>
-                            <constraint firstAttribute="bottom" secondItem="DWS-0z-FlB" secondAttribute="bottom" id="uQi-6D-Aaw"/>
+                            <constraint firstItem="lqs-lE-bNL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RQm-xe-vMW"/>
+                            <constraint firstItem="lqs-lE-bNL" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="U0u-Hx-PcF"/>
+                            <constraint firstAttribute="bottom" secondItem="lqs-lE-bNL" secondAttribute="bottom" id="iXb-cu-ldj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lqs-lE-bNL" secondAttribute="trailing" id="xLf-eQ-MlB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
